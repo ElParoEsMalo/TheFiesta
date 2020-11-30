@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="customTrece">
+    <ion-item color="customTrece" lines="none">
+      <ion-back-button></ion-back-button>
+      <ion-title class="ion-text-center">Map</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item color="customTwelve">
+      <ion-button (click)="centerMap()" color="customTrece">
+          <ion-icon slot="icon-only" name="locate" ></ion-icon>
+      </ion-button>    
+        <input
+          id="pac-input"
+          type="text" color="customTwelve"
+          placeholder="search"
+          style="color:black"
+        />
+      </ion-item>
+      <div id="map" style="width: 100%;"></div>
+      <ion-item color="customTwelve">
+        <ion-button *ngIf="mapServ.canEdit" expand="full" fill="solid" (click)="editEvent()" style="margin:auto" color="customTrece">
+          Save Changes
+        </ion-button>
+        <ion-button expand="full" fill="solid" style="margin: auto;" (click)="open()" [disabled]="!isSelected" color="customTrece">Open Selected</ion-button>
+      </ion-item>  
+
+</ion-content>

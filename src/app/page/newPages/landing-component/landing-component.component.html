@@ -1,0 +1,8 @@
+
+  <div class="contenedorBotones"> 
+    <ion-button fill="clear" (click)="change('login')">Log-in</ion-button>
+    <ion-label>Or</ion-label>
+    <ion-button fill="clear" (click)="change('signup')">Sign-up</ion-button>
+  </div>
+  <app-create-element *ngIf="model" [dataModel]="model" [action]="action" (data)="logIn($event)"></app-create-element>
+

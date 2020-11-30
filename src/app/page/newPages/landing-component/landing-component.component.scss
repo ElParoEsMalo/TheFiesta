@@ -1,0 +1,13 @@
+.contenedorBotones{
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
+.contenedor{
+    display: block;
+    min-height: fit-content;
+}
+.contenedorBotones ion-label{
+    color: black;
+    align-self: center;
+}

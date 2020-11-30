@@ -1,0 +1,22 @@
+<ion-content>
+  <form *ngIf="form" [formGroup]="form">
+    <ion-item *ngIf="image">
+      <input type="file" accept="image/*" name="file" id="file" #file class="inputfile"  (change)="changeListener($event)" hidden>
+      <ion-avatar>
+        <img src="{{url || dataModel.imagen || '../../../../../../assets/galeria/defaultImage.png' }}">
+      </ion-avatar>
+      <ion-button (click)="show()">Choose a file</ion-button>
+      
+    </ion-item>
+    <ion-item *ngFor="let item of campos">
+      <ion-label position="floating">{{item}}</ion-label>
+      <ion-input type="date" formControlName="{{item}}" required *ngIf="item==='fechaNacimiento'&&item.indexOf('password')===-1"></ion-input>
+      <ion-input type="text" formControlName="{{item}}" required *ngIf="item!=='fechaNacimiento'&&item.indexOf('password')===-1"></ion-input>
+      <ion-input type="password" formControlName="{{item}}" required *ngIf="item.indexOf('password')>=0"></ion-input>
+    </ion-item>
+    <div class="contenedorBotones">
+      <ion-button *ngIf="action" [disabled]="form.status!=='VALID'" class="botton" (click)="emit(action)">{{action}}</ion-button>
+      <ion-button class="botton" (click)="emit('cancel')">X</ion-button>
+    </div>
+  </form>
+</ion-content>

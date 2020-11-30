@@ -1,0 +1,10 @@
+<ion-header>
+  <ion-toolbar color="customVeintiCuatro">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="usuario">
+  <app-create-element [dataModel]="usuario.perfil" [action]="'edit'" (data)="edit($event)"></app-create-element>
+</ion-content>

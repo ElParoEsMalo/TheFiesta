@@ -1,0 +1,17 @@
+<ion-content>
+    <ion-item>
+        <ion-tabs >
+            <ion-tab-bar slot="top" color="customVeintiCuatro">
+                <ion-tab-button (click)="show(item.name)" *ngFor="let item of tabs">
+                    <ion-icon name="{{item.icon}}"></ion-icon>
+                    <ion-label>{{item.title}}</ion-label>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
+    </ion-item>
+        <div>
+            <app-chat-list *ngIf="opcion=='list'"></app-chat-list>
+            <app-buscador-amigos *ngIf="opcion=='buscar'"></app-buscador-amigos>
+        </div>
+</ion-content>
+

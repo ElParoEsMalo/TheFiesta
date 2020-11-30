@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-item color="primary">
+    
+    <ion-icon name="Search" style="padding:0.2em;"></ion-icon>
+    <ion-input type="text" (ionInput)="change($event.target.value)"></ion-input>
+    <ion-select placeholder="Search By" [(ngModel)]="campo">
+      <ion-select-option value="capacity">Capacity</ion-select-option>
+      <ion-select-option value="owner">Owner</ion-select-option>
+      <ion-select-option value="name">Name</ion-select-option>
+    </ion-select>
+  </ion-item >
+  <ion-content>
+    <app-event-list [events]="eventos" (evento)="show($event)"></app-event-list>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="logScrollEnd()">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data..." *ngIf="stop">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>  
+</ion-content>

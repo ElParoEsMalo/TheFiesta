@@ -1,0 +1,51 @@
+<ion-content *ngIf="!showEdit">
+
+  <div
+  style="
+  background-image: url(assets/galeria/Universo.jpg);
+  background-position: center;
+  height: 25%;
+  "
+></div>
+<ion-avatar style="margin: auto;margin-top: -40px;width: 80px;height: 80px;border: 5px solid white;">
+<img src="{{usuario.perfil.imagen}}"/>
+</ion-avatar>
+<ion-button style="position: absolute; top: 0;" (click)="editProfile()">Edit</ion-button>
+<ion-item>
+  <ion-label class="ion-text-center">
+    {{usuario.idUsuario}}
+  </ion-label>
+</ion-item>
+<ion-list>
+  <ion-item>
+    <ion-label>
+      Mis Eventos
+    </ion-label>
+  </ion-item>
+  <ion-item *ngIf="eventosPropios">
+<div *ngFor="let item of eventosPropios">   
+    <ion-avatar
+    style="
+  margin-right:10px;
+  width: 20vw;
+  max-width: 20vh;
+  height: 20vw;
+  max-height: 20vh;
+  border: 5px solid white;
+  "
+>
+<img
+src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+/>
+</ion-avatar>
+</div>
+</ion-item>
+</ion-list>
+<ion-item> 
+<ion-label> Eventos</ion-label>
+</ion-item>
+<ion-item>
+  <app-event-list [events]="eventosAjenos"></app-event-list>
+</ion-item>
+
+</ion-content>

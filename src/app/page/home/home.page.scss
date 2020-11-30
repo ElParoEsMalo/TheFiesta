@@ -1,0 +1,88 @@
+
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #ffffff;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+ion-content ion-toolbar {
+  --background: white;
+}
+
+.divider {
+  display: flex;
+
+  &:before,
+  &:after {
+    content: "";
+    flex: 1;
+  }
+}
+
+.line {
+  align-items: center;
+  margin: 1em -1em;
+  color: #15b4de;
+
+  &:before,
+  &:after {
+    height: 1px;
+    margin: 0 1em;
+  }
+} 
+
+.one-line {
+  &:before,
+  &:after {
+     background: white;
+  }
+}
+
+.auth-form ion-grid,
+.auth-form ion-row {
+  height: 100%;
+  justify-content: center;
+}
+ion-card{
+  width: 100%;
+  height: 100%;
+}
+.already {
+  display: block;
+  text-align: center;
+  padding-bottom: 10px;
+}
+ion-slides {
+  height: 100%;
+}
+.slide{
+  height: 100%;
+}
+.fondo{
+  background: url(../../../assets/galeria/FondoUni.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

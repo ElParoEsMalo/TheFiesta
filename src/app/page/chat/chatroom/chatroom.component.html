@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-item>
+    <ion-avatar color="customVeintiCuatro" id="avatar">
+      <ion-label>U</ion-label>
+    </ion-avatar>
+    <ion-label style="margin-left:10px ;">
+      Usuario
+    </ion-label>
+        <ion-back-button></ion-back-button>
+  </ion-item>
+</ion-header>
+<ion-content *ngIf="conversation&&user">
+<div class="contenedor">
+  <div style="width: 100%;display: flex;" [ngStyle]="{'justify-content': item.idUser===user.idUsuario ? 'flex-end' : 'flex-start'}" *ngFor="let item of conversation.mensajes">
+    <div class="chat" [ngStyle]="{'background': item.idUser===user.idUsuario ? 'blue' : 'grey'}" >
+      {{item.mensaje}}
+    </div>
+  </div>
+</div>
+</ion-content>
+<ion-footer>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="message"></ion-input>
+    <ion-button (click)="sendMessage()">send</ion-button>
+  </ion-item>
+</ion-footer>

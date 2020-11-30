@@ -1,0 +1,12 @@
+<div>
+  <ion-item *ngFor="let item of groups" (click)="chat(item)">
+    <ion-avatar color="customVeintiCuatro" id="avatar">
+      <ion-label>{{item.nombre[0].toUpperCase()}}</ion-label>
+    </ion-avatar>
+    <ion-label style="margin-left:10px ;">
+      {{item.nombre}}
+    </ion-label>
+  </ion-item>
+</div>
+
+

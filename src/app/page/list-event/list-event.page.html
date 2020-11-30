@@ -1,0 +1,25 @@
+<ion-content color="customTrece">
+    <div style="margin-top:2px" color="customTrece">
+      <ion-item
+      *ngFor="let item of events"
+        lines="none"
+        color="customTrece"
+        class="ion-text-center"
+        style="border-bottom: 3px solid;"
+        >
+        <ion-item color="customTrece" lines="none">
+          <ion-avatar style="margin: 2px; border: 3px solid;">
+            <ion-img src="../../../assets/galeria/Universo.jpg"></ion-img>
+          </ion-avatar>
+          <ion-label>{{item.name}}</ion-label>
+        </ion-item>
+        <ion-button
+          slot="end"
+          color="customTwelve"
+          (click)="showModalServ.showModal(item)"
+        >
+          details
+        </ion-button>
+      </ion-item>
+    </div>
+  </ion-content>

@@ -1,0 +1,45 @@
+<ion-content color="customTrece">
+  <ion-item lines="none" color="customTrece" style="margin: 0px 0px;width: 100%;">
+    <div style=" width:100%;padding: 10% 0px;height: 100%;">
+      <ion-avatar style="margin: auto; width: 90px;height: 90px; border: 3px solid;">
+          <img src="../../../assets/galeria/portadaCollage.jpg">
+        </ion-avatar>
+      </div>
+  </ion-item>
+  <ion-item color="customTrece">
+    <ion-label>
+      Name
+    </ion-label>
+    <ion-input type="text" style="text-align: right;" [(ngModel)]="event.name"></ion-input>
+  </ion-item>
+  <ion-item color="customTrece">
+    <ion-label>
+      Visibility
+    </ion-label>
+    <ion-select placeholder="Visibility"[(ngModel)]="event.visibility">
+      <ion-select-option *ngFor="let item of visibility" value="{{item}}"
+        >{{item}}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+  <ion-item color="customTrece">
+      <ion-label>
+        Price: 
+      </ion-label>
+      <ion-input type="number" style="text-align: right;" [(ngModel)]="event.price"></ion-input>
+  </ion-item>
+  <ion-item color="customTrece">
+      <ion-label>Capacity: </ion-label>
+      <ion-input type="number" style="text-align: right;" [(ngModel)]="event.capacity"></ion-input>
+    </ion-item> 
+      <ion-button color="customTwelve" expand="full" fill="outline" (click)="changeLocation()">
+        Select Location
+      </ion-button>
+</ion-content>
+    <ion-footer color="customTrece">
+      <ion-item color="customTrece">
+        <ion-button color="customTwelve" slot="end"  style="width: 100%; margin:0px auto" expand="full" fill="solid" (click)="createEvent()">
+          Done
+        </ion-button>         
+      </ion-item>
+    </ion-footer>

@@ -1,0 +1,17 @@
+<ion-content *ngIf="user">
+  <ion-avatar style="
+    margin:auto;
+    margin-top: 10vh;
+    width: 50vh;
+    max-width: 80vw;
+    height: 80vw;
+    margin-bottom: 0;
+    max-height: 50vh;
+    border: 5px solid white;
+  ">
+    <img src="{{user.perfil.imagen}}" />
+  </ion-avatar>
+  <span id="usuario">
+    {{user.idUsuario}}
+  </span>
+</ion-content>

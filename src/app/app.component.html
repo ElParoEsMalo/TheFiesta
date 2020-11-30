@@ -1,0 +1,21 @@
+<ion-app>
+<ion-menu side="start" menuId="first" contentId="content1" color="customFour">
+    <ion-header >
+      <ion-toolbar color="customFour">
+        <ion-title>Navigate</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="customFour">
+        <ion-list *ngFor="let pages of navigate" style="background-color: #133133;"  color="customFour" lines="inset">
+          <ion-menu-toggle auto-hide="true" color="customFour" lines="none">
+            <ion-item [routerLink]="pages.url" routerDirection="forward" color="customFour" lines="none">
+              <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+              {{pages.title}} 
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        <ion-item (click)="logOut()" [routerLink]="['/login']" color="customFour">Logout</ion-item>
+    </ion-content>
+  </ion-menu>
+<ion-router-outlet id="content1"></ion-router-outlet>
+</ion-app>

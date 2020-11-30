@@ -1,0 +1,26 @@
+.flexBox{
+    width: 80%;
+    display: flex;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+.flexBox ion-label{
+    display: block;
+    width: 100%;
+}
+#usuario{
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    font-size: 5vmax;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+ion-content{
+    --background: url(../../../assets/galeria/Universo.jpg);
+}

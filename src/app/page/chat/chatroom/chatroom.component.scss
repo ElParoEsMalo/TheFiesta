@@ -1,0 +1,21 @@
+#avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#001b36 ;
+    color: white;
+    
+}
+.chat{
+    display: block;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    margin: 8px;
+}
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}

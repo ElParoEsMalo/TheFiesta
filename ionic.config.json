@@ -1,0 +1,7 @@
+{
+  "name": "Universal Ticket",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

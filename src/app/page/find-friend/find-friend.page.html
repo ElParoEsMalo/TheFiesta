@@ -1,0 +1,17 @@
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Find users
+    </ion-list-header>
+
+    <ion-item *ngFor="let item of users">
+      <ion-avatar slot="start">
+        <img src="../../../assets/galeria/FondoUni.jpeg">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{item.idUser}}</h2>
+      </ion-label>
+      <ion-button (click)="sendFriendRequest(item.idUser)"> add friend </ion-button>
+    </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,18 @@
+
+  <ion-item color="primary">
+    <ion-icon name="Search" style="padding:0.2em;"></ion-icon>
+    <ion-input type="text" (ionInput)="search($event.target.value)"></ion-input>
+  </ion-item >
+  <div style="margin-top:2px" *ngIf="users">
+    <ion-item *ngFor="let item of users" lines="none" class="ion-text-center" style="border-bottom: 3px solid;">
+      <ion-item lines="none">
+        <ion-avatar style="margin: 2px; border: 3px solid;">
+          <ion-img src= "{{item.perfil.imagen}} || ../../../../assets/galeria/defaultImage.png"></ion-img>
+        </ion-avatar>
+        <ion-label>{{item.idUsuario}}</ion-label>
+      </ion-item>
+      <ion-button slot="end" (click)="addToChat(item.idUsuario)">
+        add
+      </ion-button>
+    </ion-item>
+  </div>

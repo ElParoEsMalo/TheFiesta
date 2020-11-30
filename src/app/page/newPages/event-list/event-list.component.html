@@ -1,0 +1,13 @@
+<div style="margin-top:2px" *ngIf="events.length>0">
+  <ion-item *ngFor="let item of event" lines="none" class="ion-text-center" style="border-bottom: 3px solid;">
+    <ion-item lines="none">
+      <ion-avatar style="margin: 2px; border: 3px solid;">
+        <ion-img src="../../../assets/galeria/Universo.jpg"></ion-img>
+      </ion-avatar>
+      <ion-label>{{item.name}}</ion-label>
+    </ion-item>
+    <ion-button slot="end" (click)="emitir(item)">
+      ver
+    </ion-button>
+  </ion-item>
+</div>

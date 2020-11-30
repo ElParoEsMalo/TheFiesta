@@ -1,0 +1,77 @@
+<!-- Lista Amigos -->
+<!-- 
+
+  <ion-header>
+    <ion-toolbar color="customVeintitres">
+    <ion-item color="customTen" lines="none">
+      <ion-back-button
+      [text]="Back"
+      [icon]="buttonIcon">
+    </ion-back-button>
+    <ion-title style="text-align: center; margin: auto;">Friends</ion-title>
+  </ion-item>
+</ion-toolbar>
+</ion-header>
+
+<ion-content color="customEleven">
+  <div style="margin-top:2px" color="customEleven">
+    <ion-item
+    lines="full"
+    color="customEleven"
+    class="ion-text-center"
+    >
+    <ion-item color="customEleven" lines="none">
+      
+      <ion-avatar style="height: 3em; width: 3em; ">
+        <ion-img src="../../../assets/galeria/FondoUni.jpeg" style="border: 3px solid;" color="primary"></ion-img>
+      </ion-avatar>
+      <ion-label style="color: white;margin-left: 10px;">XDS</ion-label>
+    </ion-item>
+    <ion-button
+    slot="end"
+    color="customTen"
+    >
+    details
+  </ion-button>
+</ion-item>
+</div>
+</ion-content>
+-->
+<!-- Buscar -->
+<ion-content color="customTrece">
+  <ion-item color="customTwelve">
+  
+    <ion-icon name="Search" (click)="onClick()" style="padding:0.2em;"></ion-icon>
+    <ion-input type="text"  placeHolder="Search"></ion-input>
+    
+  </ion-item >
+  <ion-item color="customTwelve">
+    <ion-label>Advanced Serach</ion-label>
+    <ion-toggle></ion-toggle>
+  </ion-item>    
+      <div>
+        <ion-item color="customTwelve">
+          <ion-label>Search By</ion-label>
+          <ion-select placeholder="Search By" >
+          <ion-select-option value="capacity">Capacity</ion-select-option>
+          <ion-select-option value="owner">Owner</ion-select-option>
+          <ion-select-option value="name">Name</ion-select-option>
+        </ion-select>
+      </ion-item>
+        <ion-item color="customTwelve">
+          <ion-label>Order By</ion-label>
+          <ion-select placeholder="Order By" title="Order By" color="customTwelve">
+            <ion-select-option value="capacity" color="customTwelve">Capacity</ion-select-option>
+            <ion-select-option value="price">Price</ion-select-option>
+            <ion-select-option value="name">Name</ion-select-option>
+            <ion-select-option value="owner">Owner</ion-select-option>
+          </ion-select>
+        </ion-item>
+        </div>
+      <div >
+<ion-item>
+  <ion-label>Lol</ion-label>
+</ion-item>
+      </div>
+      </ion-content>
+

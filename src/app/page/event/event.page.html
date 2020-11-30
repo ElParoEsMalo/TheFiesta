@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar  color="testN">
+    <ion-item color="testN" lines="none">
+
+      <ion-back-button
+      [text]="Back"
+      [icon]="buttonIcon">
+    </ion-back-button>
+    <ion-title style="text-align: center;margin: auto;" >Create Event</ion-title>
+  </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="test" lines="none">
+  <ion-item lines="none" color="test" style="margin: 0px 0px;width: 100%;">
+    <div style=" width:100%;padding: 10% 0px;height: 100%;">
+      <ion-avatar style="margin: auto; width: 90px;height: 90px; border: 3px solid;">
+          <img src="../../../assets/galeria/portadaCollage.jpg">
+        </ion-avatar>
+      </div>
+  </ion-item>
+  <ion-item color="test">
+    <ion-label>
+      Name
+    </ion-label>
+    <ion-input type="text" style="text-align: right;"></ion-input>
+  </ion-item>
+  <ion-item color="test">
+    <ion-label>
+      Visibility
+    </ion-label>
+    <ion-select placeholder="Visibility">
+      <ion-select-option>Public</ion-select-option>
+      <ion-select-option>Private</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item color="test">
+      <ion-label>
+        Price: 
+      </ion-label>
+      <ion-input type="number" style="text-align: right;"></ion-input>
+  </ion-item>
+  <ion-item color="test">
+      <ion-label>Capacity: </ion-label>
+      <ion-input type="number" style="text-align: right;"></ion-input>
+    </ion-item > 
+      <ion-button color="test" expand="full" fill="solid" (click)="changeLocation()">
+        Select Location
+      </ion-button>
+</ion-content>
+    <ion-footer color="test">
+      <ion-item color="test" lines="none">
+        <ion-button  color="testN" slot="end"  style="width: 100%; margin:0px auto" expand="full" fill="solid">
+          Done
+        </ion-button>         
+      </ion-item>
+    </ion-footer>

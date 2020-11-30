@@ -1,0 +1,30 @@
+<ion-content>
+
+  <div
+  style="
+  background-image: url(assets/galeria/Universo.jpg);
+  background-position: center;
+  height: 25%;
+  "
+></div>
+<ion-avatar style="margin: auto;margin-top: -40px;width: 80px;height: 80px;border: 5px solid white;">
+<img src="{{usuario.perfil.imagen}}"/>
+</ion-avatar>
+<ion-button style="position: absolute; top: 0;" (click)="editProfile()">Edit</ion-button>
+<ion-item>
+  <ion-label class="ion-text-center">
+    {{usuario.idUsuario}}
+  </ion-label>
+</ion-item>
+
+<ion-item class="btnera">
+  <ion-button (click)="show(true)">
+    Mis Eventos
+  </ion-button>
+</ion-item>
+<ion-item class="btnera">
+  <ion-button (click)="show(false)">
+    Eventos Ajenos
+  </ion-button>
+</ion-item>
+</ion-content>

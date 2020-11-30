@@ -1,0 +1,28 @@
+<ion-content color="customTwelve">
+  <div style="margin-top:2px" color="customTwelve">
+    <ion-item
+    *ngFor="let item of notification"
+      lines="none"
+      color="customTwelve"
+      class="ion-text-center"
+      style="border-bottom: 3px solid;"
+      >
+      <ion-item color="customTwelve" lines="none">
+        <ion-icon
+        name="person-outline"
+        style="border-radius: 50%;border: 3px solid;
+          padding: 5px;
+        "
+      ></ion-icon>
+      <ion-label style="margin-left: 5px;">{{item}}</ion-label>
+    </ion-item>
+      <ion-button
+        slot="end"
+        color="customTrece"
+        (click)="addFriend(item)"
+      >
+        details
+      </ion-button>
+    </ion-item>
+  </div>
+</ion-content>

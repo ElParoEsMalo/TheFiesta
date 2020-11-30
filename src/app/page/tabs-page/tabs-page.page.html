@@ -1,0 +1,10 @@
+<ion-content color="customVeintiCuatro">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" color="customVeintiCuatro">
+      <ion-tab-button tab="{{item.name}}" *ngFor="let item of tabs">
+        <ion-icon name="{{item.icon}}"></ion-icon>
+        <ion-label>{{item.title}}</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

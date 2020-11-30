@@ -1,0 +1,51 @@
+
+    <ion-header>
+      <ion-toolbar color="customTrece">
+        <ion-title style="text-align: center;" >Event</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content color="customTwelve">
+      <ion-item lines="none" color="customTwelve" style="margin: 0px 0px;width: 100%;">
+        <div style=" width:100%;padding: 10% 0px;height: 100%;">
+          <ion-avatar style="margin: auto; width: 90px;height: 90px; border: 3px solid white;">
+              <img src="../../../assets/galeria/portadaCollage.jpg">
+            </ion-avatar>
+          </div>
+      </ion-item>
+      <ion-item lines="none" color="customTwelve">
+        <ion-label class="ion-text-center">
+            {{event.name}}
+        </ion-label>
+      </ion-item>
+      <ion-item color="customTwelve" lines="none">
+          <ion-label slot="start">
+            Price: 
+          </ion-label>
+          <ion-label slot="end" lines="none">
+            {{event.price}}
+          </ion-label>
+      </ion-item>
+      <ion-item lines="none" color="customTwelve">
+          <ion-label slot="start">
+              Stock: 
+            </ion-label>
+            <ion-label slot="end" lines="none">
+              {{event.capacity-event.users.length}}
+            </ion-label>
+        </ion-item>
+        <ion-button color="customTrece" expand="full" fill="outline" (click)="show()">
+          Show Location
+        </ion-button> 
+          <ion-button color="customTrece" expand="full" fill="outline" (click)="buyTicket()" [disabled]="disableBoton">
+            Buy
+          </ion-button>
+    </ion-content>
+        <ion-footer>
+          <ion-item lines="none" color="customTrece">
+            <ion-button slot="start" color="customTrece" style="width: 100% ;margin: 0px 0px" expand="full" fill="solid" (click)="dismiss()">
+                Cancel
+              </ion-button>
+          </ion-item>
+        </ion-footer>
+  
