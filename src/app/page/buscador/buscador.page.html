@@ -10,7 +10,7 @@
     </ion-select>
   </ion-item >
   <ion-content>
-    <app-event-list [events]="eventos" (evento)="show($event)"></app-event-list>
+    <app-event-list [events]="eventos" (evento)="show($event.event)"></app-event-list>
     <ion-infinite-scroll threshold="100px" (ionInfinite)="logScrollEnd()">
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"

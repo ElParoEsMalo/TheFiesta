@@ -1,8 +1,5 @@
-import { EventPage } from './page/event/event.page';
+
 import { MapPageModule } from './page/map/map.module';
-import { ModalUserEventsPageModule } from './page/modal-user-events/modal-user-events.module';
-import { ModalUserEventsPage } from './page/modal-user-events/modal-user-events.page';
-import { EventServiceService } from "./servicios/event/event-service.service";
 import { ModalEventPageModule } from "./page/modal-event/modal-event.module";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -31,7 +28,6 @@ import { PayPal } from '@ionic-native/paypal/ngx';
     IonicModule.forRoot(),
     AppRoutingModule,
     ModalEventPageModule,
-    ModalUserEventsPageModule,
     MapPageModule,
     EventPageModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -45,7 +41,6 @@ import { PayPal } from '@ionic-native/paypal/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AuthService,
-    EventServiceService,
     Geolocation
   ],
   bootstrap: [AppComponent]

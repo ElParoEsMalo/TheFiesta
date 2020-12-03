@@ -7,8 +7,7 @@ import { MenuController } from "@ionic/angular";
   styleUrls: ["home.page.scss"]
 })
 export class HomePage {
-  constructor(private menuCtrl: MenuController) {
-    this.menuCtrl.enable(false, "first");
+  constructor() {
   }
 
   slideOpts = {

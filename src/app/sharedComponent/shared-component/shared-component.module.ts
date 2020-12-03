@@ -1,10 +1,10 @@
-import { EventListComponent } from './../../page/newPages/event-list/event-list.component';
-import { CreateElementComponent } from './../../page/newPages/create-element/create-element.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LandingComponentComponent } from 'src/app/page/newPages/landing-component/landing-component.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { CreateElementComponent } from './create-element/create-element.component';
+import { EventListComponent } from './event-list/event-list.component';
+import { LandingComponentComponent } from './landing-component/landing-component.component';
 
 
 

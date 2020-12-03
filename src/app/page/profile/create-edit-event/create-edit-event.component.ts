@@ -1,7 +1,8 @@
-import { FirebaseServiceService } from './../../../servicios/nuevosServicios/firebase-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Event } from 'src/app/core/models/evento';
 import { MapService } from 'src/app/servicios/map/map.service';
+import { Router } from '@angular/router';
+import { FirebaseServiceService } from 'src/app/servicios/firebaseServ/firebase-service.service';
 
 @Component({
   selector: 'app-create-edit-event',
@@ -9,14 +10,16 @@ import { MapService } from 'src/app/servicios/map/map.service';
   styleUrls: ['./create-edit-event.component.scss'],
 })
 export class CreateEditEventComponent implements OnInit {
-  visibility: string[] = ["private", "public"];
+  visibility: string[] = ['private', 'public'];
   capacity: number;
   optionSelected: string;
-  event: Event = new Event();
+  event: Event;
   file: File;
-  constructor(private mapServ:MapService,private firebaseServ:FirebaseServiceService) { }
+  constructor(private mapServ: MapService, private firebaseServ: FirebaseServiceService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.event = this.router.getCurrentNavigation().extras.state.event || new Event();
+  }
 
   changeListener($event): void {
     this.file = $event.target.files[0];
@@ -26,12 +29,12 @@ export class CreateEditEventComponent implements OnInit {
     console.log(this.file);
   }
   show() {
-    console.log(document.getElementById("file"));
-    document.getElementById("file").click();
+    console.log(document.getElementById('file'));
+    document.getElementById('file').click();
   }
   createEvent() {
-    this.event.owner=this.firebaseServ.localUser.idUsuario;
-    this.firebaseServ.createEvent(this.event,this.file);
+    this.event.owner = this.firebaseServ.localUser.idUsuario;
+    this.firebaseServ.createEvent(this.event, this.file);
   }
   changeLocation(){
     this.mapServ.edit(this.event);

@@ -1,19 +1,17 @@
-import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs/operators';
-import { Usuario } from 'src/app/modules/newModules/usuario';
+import { ModalEventPage } from 'src/app/page/modal-event/modal-event.page';
 import { FirebaseServiceService } from 'src/app/servicios/firebaseServ/firebase-service.service';
-import { ModalEventPage } from '../modal-event/modal-event.page';
 
 @Component({
   selector: 'app-buscador',
-  templateUrl: './buscador.page.html',
-  styleUrls: ['./buscador.page.scss'],
+  templateUrl: './buscador.component.html',
+  styleUrls: ['./buscador.component.scss'],
 })
-export class BuscadorPage implements OnInit {
-
+export class BuscadorComponent implements OnInit {
   campo = 'name';
-  eventos: Array<string> = [];
+  eventos: Array<Event> = [];
   searchValue = '';
   limit = 5;
   stop = true;
@@ -49,7 +47,7 @@ export class BuscadorPage implements OnInit {
     console.log(this.campo);
     this.firebaseServ
       .searchEvents(this.searchValue, this.campo, this.limit)
-      .then((res: Array<string>) => {
+      .then((res: Array<Event>) => {
         console.log(res);
         this.eventos = res;
         delay(10000);

@@ -1,4 +1,4 @@
-import { ModalUserEventsPage } from './../../page/modal-user-events/modal-user-events.page';
+
 import { Event } from "./../../core/models/evento";
 import { ModalController } from "@ionic/angular";
 import { Injectable } from "@angular/core";

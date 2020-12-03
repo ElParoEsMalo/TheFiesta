@@ -6,7 +6,7 @@
   </ion-item>
 </ion-header>
 <ion-content>
-<app-event-list [events]="events" [actions]='actions'></app-event-list>
+<app-event-list [events]="events" [actions]='actions' (evento)="doAction($event)"></app-event-list>
 </ion-content>
 <ion-footer *ngIf="action">
   <ion-button expand="full" color="customVeintiCuatro" (click)="createEvent()">add</ion-button>

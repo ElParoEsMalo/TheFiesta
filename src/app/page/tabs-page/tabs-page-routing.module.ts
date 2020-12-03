@@ -1,4 +1,4 @@
-import { EventsPageModule } from '../events/events.module';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -19,6 +19,8 @@ const routes: Routes = [
     loadChildren: () => import('../user-home/user-home.module').then( m => m.UserHomePageModule)},
     { path: '',
     loadChildren: () => import('../user-home/user-home.module').then( m => m.UserHomePageModule)},
+    { path: 'mapa',
+    loadChildren: () => import('../explore/explore.module').then( m => m.ExplorePageModule)},
     ]
   }
 ];

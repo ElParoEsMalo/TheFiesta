@@ -1,16 +1,18 @@
 import { Mensaje } from './../../../modules/newModules/conversation';
 import { Chat, Usuario } from './../../../modules/newModules/usuario';
-import { FirebaseServiceService } from 'src/app/servicios/nuevosServicios/firebase-service.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Conversation } from 'src/app/modules/newModules/conversation';
+import { FirebaseServiceService } from 'src/app/servicios/firebaseServ/firebase-service.service';
+import { IonContent } from '@ionic/angular';
 
 @Component({
-  selector: "app-chatroom",
-  templateUrl: "./chatroom.component.html",
-  styleUrls: ["./chatroom.component.scss"],
+  selector: 'app-chatroom',
+  templateUrl: './chatroom.component.html',
+  styleUrls: ['./chatroom.component.scss'],
 })
 export class ChatroomComponent implements OnInit, OnDestroy {
+  @ViewChild(IonContent, {read: IonContent, static: false}) content: IonContent;
   chat: Chat;
   conversation: Conversation;
   message: string;
@@ -23,15 +25,17 @@ export class ChatroomComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log("aka de nuevo");
+    console.log('aka de nuevo');
     this.user = this.firebaseServ.localUser;
-    this.firebaseServ.setSubscription(this.firebaseServ.loadConversation(this.chat.chat).subscribe((res: Conversation) => {
-      console.log("cambio ");
+    this.firebaseServ.openChat(this.chat.idChat);
+    this.firebaseServ.setSubscription(this.firebaseServ.loadConversation(this.chat.idChat).subscribe((res: Conversation) => {
+      console.log('cambio ');
       this.conversation = res;
     }));
   }
   ngOnDestroy(): void {
     this.firebaseServ.destroySubscription();
+    this.firebaseServ.closeChat(this.chat.idChat);
   }
   sendMessage() {
     const mensaje: Mensaje = {
@@ -39,7 +43,9 @@ export class ChatroomComponent implements OnInit, OnDestroy {
       mensaje: this.message,
     };
     this.conversation.mensajes.push(mensaje);
-    this.firebaseServ.sendMessage(this.chat.chat, this.conversation);
-    this.message = "";
+    this.firebaseServ.sendMessage(this.chat.idChat, this.conversation).then(res=>{
+      this.message = '';
+      this.content.scrollToBottom(300);
+    });
   }
 }

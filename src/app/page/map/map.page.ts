@@ -84,7 +84,6 @@ export class MapPage implements OnInit {
     });
 
     var markers = null;
-    console.log(this.mapServ.events);
     this.mapServ.events.forEach(element => {
       var infowindow = new google.maps.InfoWindow({
         content: this.generateInfo(element)

@@ -1,5 +1,4 @@
 import { AuthService } from "./../servicios/auth/auth.service";
-import { DataService } from "./../servicios/data/data.service";
 import { Injectable } from "@angular/core";
 import {
   CanActivate,

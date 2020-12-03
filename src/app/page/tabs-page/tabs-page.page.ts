@@ -21,6 +21,11 @@ export class TabsPagePage implements OnInit {
       title: 'buscar'
     },
     {
+      icon: 'map',
+      name: 'mapa',
+      title: 'mapa'
+    },
+    {
       icon: 'home',
       name: 'home',
       title: 'inicio'

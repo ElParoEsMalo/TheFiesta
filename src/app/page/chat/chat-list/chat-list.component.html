@@ -1,11 +1,15 @@
 <div>
-  <ion-item *ngFor="let item of groups" (click)="chat(item)">
+  <ion-item *ngFor="let item of firebaseServ.localChat" (click)="chat(item)">
     <ion-avatar color="customVeintiCuatro" id="avatar">
       <ion-label>{{item.nombre[0].toUpperCase()}}</ion-label>
     </ion-avatar>
     <ion-label style="margin-left:10px ;">
-      {{item.nombre}}
+      <h3>
+        {{item.nombre}}
+      </h3>
+      <p style="color:lightgrey">{{item.lastMessage}}</p>
     </ion-label>
+    <ion-badge color="customVeintiCuatro">{{item.newMessage}}</ion-badge>
   </ion-item>
 </div>
 

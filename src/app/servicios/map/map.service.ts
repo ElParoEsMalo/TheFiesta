@@ -1,3 +1,4 @@
+import { FirebaseServiceService } from 'src/app/servicios/firebaseServ/firebase-service.service';
 import { Router } from '@angular/router';
 import { MapPage } from './../../page/map/map.page';
 import { MapPageModule } from './../../page/map/map.module';
@@ -12,7 +13,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 export class MapService {
   events:Event[]=[];
   canEdit=false;
-  constructor(private router:Router,private geolocation:Geolocation) { }
+  constructor(private router:Router,private geolocation:Geolocation,private firebaseServ:FirebaseServiceService) { }
    edit(event:Event){
     console.log("show");
     console.log(event);
@@ -33,7 +34,11 @@ export class MapService {
 
   }
   openMap(){
-    this.router.navigateByUrl("/map");
+    this.firebaseServ.getPublicEvents().then((res:Array<Event>)=>{
+      this.events=res
+      console.log(this.events);
+      this.router.navigateByUrl("/map");
+    })
   }
   getPosition(){
     this.geolocation.getCurrentPosition().then(d=>{

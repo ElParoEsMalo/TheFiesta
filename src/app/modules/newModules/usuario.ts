@@ -5,7 +5,6 @@ export class Usuario {
   public eventosPropios: Array<string>;
   public eventosAjenos: Array<string>;
   public perfil: Perfil;
-  public chats: Array<Chat> = [];
   constructor(idUsuario: string, perfil?: Perfil) {
     this.idUsuario = idUsuario;
     this.eventosPropios = [];
@@ -28,5 +27,8 @@ export class Perfil {
 }
 export interface Chat {
   nombre: string;
-  chat: string;
+  idChat: string;
+  lastMessage: string;
+  newMessage: number;
+  inline: boolean;
 }

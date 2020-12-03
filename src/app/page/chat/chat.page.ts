@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { FirebaseServiceService } from 'src/app/servicios/nuevosServicios/firebase-service.service';
 import { Component, OnInit } from '@angular/core';
+import { FirebaseServiceService } from 'src/app/servicios/firebaseServ/firebase-service.service';
 
 @Component({
   selector: 'app-chat',
@@ -9,12 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatPage implements OnInit {
   tabs;
-  opcion:string;
-  constructor( private firebaseServ:FirebaseServiceService,private router:Router) { }
-  
+  opcion: string;
+  constructor( private firebaseServ: FirebaseServiceService, private router: Router) { }
+
   ngOnInit() {
     this.opcion = 'list';
-    this.tabs=[{
+    this.tabs = [{
       icon: 'people-circle-outline',
       name: 'list',
       title: 'perfil'
@@ -24,10 +24,9 @@ export class ChatPage implements OnInit {
       name: 'buscar',
       title: 'buscar'
     }];
-    //this.firebaseServ.getChat();
   }
-  show(nombre:string){
+  show(nombre: string) {
     console.log(nombre);
-    this.opcion=nombre;
+    this.opcion = nombre;
   }
 }
