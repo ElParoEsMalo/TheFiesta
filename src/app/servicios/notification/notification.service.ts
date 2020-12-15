@@ -1,3 +1,4 @@
+import { Errores } from './../../modules/errores';
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 
@@ -7,9 +8,9 @@ import { ToastController } from '@ionic/angular';
 export class NotificationService {
 
   constructor(private toastController: ToastController) { }
-  async presentToast() {
+  async presentToast(message: string) {
     const toast = await this.toastController.create({
-      message: 'Your settings have been saved.',
+      message,
       duration: 2000
     });
     toast.present();

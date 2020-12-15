@@ -1,10 +1,10 @@
 
 export class Login {
-    user:string='xd';
-    password:string='';
+    user = '';
+    password = '';
 }
 export class SignUp {
-    user:string='';
-    password:string='';
-    cpassword:string='';
+    user = '';
+    password = '';
+    cpassword = '';
 }

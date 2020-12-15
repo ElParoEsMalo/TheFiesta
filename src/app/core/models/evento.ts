@@ -32,6 +32,7 @@ export class Event {
     this.name = name;
     this.latitude = latitude;
     this.longitude = longitude;
+    this.imagen = '';
     // this.tickets = tickets;
   }
   /* public get tickets(): Ticket[] {

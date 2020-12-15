@@ -17,11 +17,15 @@ export class EditProfileComponent implements OnInit {
   }
   edit(event) {
     this.usuario.perfil = event.data;
-    console.log(this.usuario);
+    console.log(this.usuario,event.file);
     if (event.file) {
-      this.firebaseServ.uploadImage(this.usuario.idUsuario, event.file, 'profile');
+      this.firebaseServ.uploadImage(this.usuario.idUsuario, event.file, 'profile').then((res: any) => {
+        this.usuario.perfil.imagen = res;
+        this.firebaseServ.editProfile(this.usuario);
+      });
+    } else {
+      this.firebaseServ.editProfile(this.usuario);
     }
-    this.firebaseServ.editProfile(this.usuario);
   }
 
 }

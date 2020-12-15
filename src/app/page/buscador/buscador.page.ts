@@ -50,9 +50,8 @@ export class BuscadorPage implements OnInit {
     this.firebaseServ
       .searchEvents(this.searchValue, this.campo, this.limit)
       .then((res: Array<string>) => {
-        console.log(res);
+        console.log(res,'xioxio');
         this.eventos = res;
-        delay(10000);
         this.stop = false;
       });
   }

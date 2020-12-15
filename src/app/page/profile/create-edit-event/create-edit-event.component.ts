@@ -33,8 +33,10 @@ export class CreateEditEventComponent implements OnInit {
     document.getElementById('file').click();
   }
   createEvent() {
-    this.event.owner = this.firebaseServ.localUser.idUsuario;
-    this.firebaseServ.createEvent(this.event, this.file);
+    if(this.event.imagen.length !== 0 && this.event.latitude) {
+      this.event.owner = this.firebaseServ.localUser.idUsuario;
+      this.firebaseServ.createEvent(this.event, this.file);
+    }
   }
   changeLocation(){
     this.mapServ.edit(this.event);

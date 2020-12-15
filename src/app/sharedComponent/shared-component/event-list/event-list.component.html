@@ -2,16 +2,16 @@
   <ion-item *ngFor="let item of event" lines="none" class="ion-text-center" style="border-bottom: 3px solid;">
     <ion-item lines="none">
       <ion-avatar style="margin: 2px; border: 3px solid;">
-        <ion-img src="../../../assets/galeria/Universo.jpg"></ion-img>
+        <ion-img src="{{item.imagen}} || ../../../assets/galeria/Universo.jpg"></ion-img>
       </ion-avatar>
       <ion-label>{{item.name}}</ion-label>
     </ion-item>
     <div width="60%" slot="end">
 
-      <ion-button class="btn" (click)="emitir(item,'detail')">
+      <ion-button class="btn" (click)="emitir(item,'detail')" color="customVeintiCuatro">
         <ion-icon name="eye"></ion-icon>
       </ion-button>
-      <ion-button class="btn" (click)="emitir(item,action)" *ngFor="let action of actions">
+      <ion-button class="btn" (click)="emitir(item,action)" *ngFor="let action of actions" color="customVeintiCuatro">
         <ion-icon name="{{action}}"></ion-icon>
       </ion-button>
     </div>

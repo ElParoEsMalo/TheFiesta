@@ -1,3 +1,5 @@
+import { Errores } from './../../modules/errores';
+import { NotificationService } from './../notification/notification.service';
 import { Conversation } from './../../modules/newModules/conversation';
 import { Router } from '@angular/router';
 import { User } from 'src/app/modules/user';
@@ -30,10 +32,11 @@ export class FirebaseServiceService {
     private afStoreSv: AngularFirestore,
     private firestoreStorage: AngularFireStorage,
     private afAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private notificationServ: NotificationService
   ) {
     this.user = this.afStoreSv.collection<User>('Users');
-    this.events = this.afStoreSv.collection<Event>('Event'); // Event
+    this.events = this.afStoreSv.collection<Event>('Event');
     this.chat = this.afStoreSv.collection<Conversation>('Chat');
     this.notification = this.afStoreSv.collection<Chat>('Notification');
     this.triggers = [];
@@ -44,30 +47,21 @@ export class FirebaseServiceService {
   logIn(user: Login) {
     const email = user.user + '@firebase.com';
     return this.afAuth.auth
-      .signInWithEmailAndPassword(email, user.password)
-      .then((res) => {
-        return this.getProfile(user.user).then((re: Usuario) => {
-          if (re) {
-            this.localUser = re;
-          }
-          this.localUser.idUsuario = email.split('@')[0];
-          return re;
-        });
-      });
+      .signInWithEmailAndPassword(email, user.password);
   }
   logOut() {
-    return this.afAuth.auth.signOut().then(res=>{
-      this.triggers.forEach(tri=>{
+    return this.afAuth.auth.signOut().then(res => {
+      this.triggers.forEach(tri => {
         tri.unsubscribe();
       });
       this.router.navigate(['']);
     });
   }
   signUp(user: SignUp) {
-    if (user.password !== user.cpassword) {
-      return null;
-    }
     const email = user.user + '@firebase.com';
+    if (user.cpassword !== user.password) {
+      return this.promiseError('Error password and confirmation password is not the same');
+    }
     return this.afAuth.auth.createUserWithEmailAndPassword(
       email,
       user.password
@@ -98,14 +92,14 @@ export class FirebaseServiceService {
   createEvent(item: Event, file: File) {
     console.log(item);
     this.events.add(Object.assign({}, item)).then(res => {
-      this.uploadImage(res.id, file, 'events').then(re => {
+      this.uploadImage(res.id, file, 'events').then((re: any) => {
         item.imagen = re;
         item.id = res.id;
         this.editEvent(item).then(() => {
           this.localUser.eventosPropios.push(item.id);
           this.editProfile(this.localUser);
         });
-      });
+      }).catch((err) => this.promiseError(err));
     });
   }
   editEvent(item: Event, id?: string) {
@@ -202,7 +196,7 @@ export class FirebaseServiceService {
       .orderBy('idUsuario')
       .startAt(value)
       .endAt(value + '\uf8ff')
-      .limit(5 + limit || 5)
+      .limit(30 + limit || 30)
       .get()
       .then((res) => {
         return res.docs.map((data) => data.data());
@@ -226,34 +220,24 @@ export class FirebaseServiceService {
     return this.notification.doc(idUser).collection('notification').doc(idChat).ref.get().then(not => not.data());
   }
   uploadPreview(file: File) {
-    console.log('uploadProfileImage');
-    const fileRef = this.firestoreStorage.ref(`preview/preview.jpg`);
-    return fileRef.put(file).then(async function(snapshot) {
-      console.log('Uploaded a blob or file!');
+    const fileRef = this.firestoreStorage.ref(`preview/${this.localUser.idUsuario}preview.jpg`);
+    return fileRef.put(file).then(async (snapshot) => {
+      this.notificationServ.presentToast('Imagen Cargada');
       return await snapshot.ref.getDownloadURL();
-    });
+    }).catch(res => console.log(res));
   }
   uploadImage(id: string, file: File, type?: string) {
-    console.log('uploadProfileImage');
     const fileRef = this.firestoreStorage.ref(
       `${type || 'profile'}Images/${id}.jpg`
     );
-    return fileRef.put(file).then(async function(snapshot) {
-      console.log('Uploaded a blob or file!');
+    if (!file) {
+      return this.promiseError('Error no image selected');
+    }
+    return fileRef.put(file).then(async (snapshot) => {
+      this.notificationServ.presentToast('Imagen Cargada');
       return await snapshot.ref.getDownloadURL();
     });
   }
-  /*
-  createUser(item: User) {
-    this.events.add(User);
-  }
-  editUser(item: Event, id?: string) {
-    this.events.doc(id || item.id).set(Object.assign({}, item));
-  }
-  removeUser(item: Event, id?: string) {
-    this.events.doc(id || item.id).delete();
-  }*/
-
   buyTicket(event: Event) {
     console.log(this.localUser);
     this.localUser.eventosAjenos.push(event.id);
@@ -279,5 +263,10 @@ export class FirebaseServiceService {
       console.log('chat', res);
       this.localChat = res;
     }));
+  }
+  private promiseError(message: string) {
+    return new Promise((resolve, reject) => {
+      reject({message});
+   });
   }
 }

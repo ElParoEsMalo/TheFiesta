@@ -8,14 +8,15 @@ import { FirebaseServiceService } from 'src/app/servicios/firebaseServ/firebase-
   styleUrls: ['./buscador-amigos.component.scss'],
 })
 export class BuscadorAmigosComponent implements OnInit {
-  users: Array<Usuario>;
+  users: Array<Usuario> = [];
   constructor(private firebaseServ: FirebaseServiceService) { }
 
   ngOnInit() {}
   search(value: string) {
-    this.firebaseServ.searchUsers(value).then((res: Array<Usuario>) => {
+    this.firebaseServ.searchUsers(value, this.users.length).then((res: Array<Usuario>) => {
+      console.log(res);
       this.users = res.filter(element => {
-        return !this.firebaseServ.localChat.map(chat => chat.nombre).includes(element.idUsuario)
+        return !(this.firebaseServ.localChat.map(chat => chat.nombre).indexOf(element.idUsuario) >= 0)
           && element.idUsuario !== this.firebaseServ.localUser.idUsuario;
       });
 

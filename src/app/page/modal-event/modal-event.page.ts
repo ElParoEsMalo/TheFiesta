@@ -53,9 +53,8 @@ export class ModalEventPage implements OnInit {
       })).then(() => {
         const payment = new PayPalPayment(this.event.price + '', 'USD', this.event.name, 'sale');
         this.payPal.renderSinglePaymentUI(payment).then(() => {
-          console.log('se pago');
           this.firebaseServ.buyTicket(this.event);
-
+          this.disableBoton = true;
         }, () => {
           console.log('error pago');
           // Error or render dialog closed without being successful
@@ -68,7 +67,5 @@ export class ModalEventPage implements OnInit {
       console.log(error);
       // Error in initialization, maybe PayPal isn't supported or something else
     });
-    this.disableBoton = true;
-    this.firebaseServ.buyTicket(this.event);
   }
 }

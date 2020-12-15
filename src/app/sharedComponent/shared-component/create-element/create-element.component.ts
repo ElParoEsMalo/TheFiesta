@@ -45,9 +45,12 @@ export class CreateElementComponent implements OnInit, OnChanges {
   }
   changeListener($event): void {
     this.file = $event.target.files[0];
-    this.firebaseServ.uploadPreview(this.file).then((res) => {
-      this.url = res;
-    });
+    console.log(this.file.type);
+    if(this.file.type.indexOf('image/')>=0){
+      this.firebaseServ.uploadPreview(this.file).then((res) => {
+        this.url = res;
+      });
+    }
     console.log(this.file);
   }
   show() {

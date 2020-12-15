@@ -48,9 +48,8 @@ export class BuscadorComponent implements OnInit {
     this.firebaseServ
       .searchEvents(this.searchValue, this.campo, this.limit)
       .then((res: Array<Event>) => {
-        console.log(res);
+        console.log(res,'xindala');
         this.eventos = res;
-        delay(10000);
         this.stop = false;
       });
   }
